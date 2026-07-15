@@ -1,2 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Longshot Scanner Alerts — SMS Opt-In</title>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background: #ffffff;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.1rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  .program { color: #555; margin-top: 0; }
+  form {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 24px 0;
+    background: #fafafa;
+  }
+  label { display: block; font-weight: bold; margin-bottom: 6px; }
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 16px 0;
+    font-weight: normal;
+  }
+  .consent input { margin-top: 5px; }
+  button {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:focus, input:focus { outline: 2px solid #444; outline-offset: 2px; }
+  .disclosure { font-size: 0.95rem; color: #333; }
+  .confirm { display: none; color: #1a6b1a; font-weight: bold; margin-top: 12px; }
+  footer { margin-top: 40px; font-size: 0.9rem; color: #555; }
+</style>
+</head>
+<body>
 
+<h1>Longshot Scanner Alerts</h1>
+<p class="program">SMS Program Opt-In</p>
 
+<p>Longshot Scanner Alerts is an SMS notification program that delivers automated
+stock-market scan alerts (ticker symbols, numeric scores, and scan summaries) to
+subscribers who opt in below.</p>
+
+<h2>Subscribe to SMS Alerts</h2>
+
+<form id="optin-form" onsubmit="return handleOptIn(event)">
+  <label for="phone">Mobile phone number</label>
+  <input type="tel" id="phone" name="phone" placeholder="+1 555 555 5555" required>
+
+  <label class="consent">
+    <input type="checkbox" id="consent" required>
+    <span>I agree to receive automated SMS stock scan alerts from Longshot Scanner
+    at the phone number provided. Consent is not a condition of any purchase.
+    Message frequency varies. Message and data rates may apply. Reply STOP to
+    cancel, HELP for help.</span>
+  </label>
+
+  <button type="submit">Subscribe</button>
+  <p class="confirm" id="confirm-msg">Thank you — your opt-in request has been recorded.
+  You will receive a confirmation text message.</p>
+</form>
+
+<p class="disclosure"><strong>Message frequency varies</strong> based on market
+conditions and scanner configuration, typically 1&ndash;5 messages per trading day.
+<strong>Message and data rates may apply.</strong></p>
+
+<h2>Opting Out / Help</h2>
+<p>Reply <strong>STOP</strong> to cancel messages at any time. Reply
+<strong>HELP</strong> for assistance. You may also opt in by texting
+<strong>START</strong> to the service number.</p>
+
+<h2>Privacy</h2>
+<p>No mobile information will be shared with third parties or affiliates for
+marketing or promotional purposes. See the full
+<a href="https://gilayalah-sys.github.io/longshot-legal-pages/privacy.html">Privacy Policy</a>
+and
+<a href="https://gilayalah-sys.github.io/longshot-legal-pages/terms.html">Terms and Conditions</a>
+for this program.</p>
+
+<footer>
+  Longshot Scanner Alerts &middot;
+  <a href="https://gilayalah-sys.github.io/longshot-legal-pages/privacy.html">Privacy Policy</a> &middot;
+  <a href="https://gilayalah-sys.github.io/longshot-legal-pages/terms.html">Terms and Conditions</a>
+</footer>
+
+<script>
+function handleOptIn(e) {
+  e.preventDefault();
+  document.getElementById('confirm-msg').style.display = 'block';
+  document.getElementById('optin-form').querySelector('button').disabled = true;
+  return false;
+}
+</script>
+
+</body>
+</html>
